@@ -26,12 +26,6 @@ for column in snail_array:
 # 13 12 11 10 9 
 
 ######## insert your algorithm here ########
-snail_array= []
-for i in range(5):
-	snail_array.append([])
-	for j in range(5):
-		snail_array[i].append(None)
-
 
 maxi=maxj=4
 mini=minj=i=j=0
