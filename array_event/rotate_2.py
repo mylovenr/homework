@@ -8,7 +8,7 @@ for i in range(5):
 	init_array.append(empty_array)
 
 for column in init_array:
-	for num in column:		
+	for num in column:
 		print "%2s" % num,
 	print
 # print init array
@@ -33,19 +33,9 @@ for i in range(5):
 	rotate_array.append(empty_array)
 
 ######## insert your algorithm here ########
-
-em_array = []
 for i in range(5):
-	first_array = []
-	for col in init_array:
-		first_array.append(col[i])
-	em_array.append(first_array)
-
-bin_array = []
-for li in em_array:
-	bin_array.append(li[::-1])
-
-rotate_array = bin_array
+	for j in range(5):
+		rotate_array[i][j]=init_array[4-j][i]
 
 print
 for column in rotate_array:
