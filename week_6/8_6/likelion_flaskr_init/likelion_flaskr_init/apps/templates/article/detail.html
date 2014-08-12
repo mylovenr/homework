@@ -34,9 +34,18 @@
                             <span class="label label-primary">{{ comment.author }}</span>
                             <small>
                                 <a href="mailto:{{ comment.email }}">{{ comment.email }}</a> 
-                                <em>{{ comment.date_created.strftime('%Y-%m-%d %H:%M:%S') }}</em>
+                                <em>{{ comment.date_created.strftime('%Y-%m-%d %H:%M:%S') }}
+                                </em>
+
+
+
                             </small>
-                        </span>
+                        </span> 
+
+                    <a href="{{url_for('comment_like', article_id = article.id,comment_id = comment.id) }}" class="btn btn-success">Like {{comment.like}} </a>
+                    <a href="{{url_for('comment_delete', id = comment.id) }}" class="btn btn-danger">Delete</a>
+
+
                     </div>
                 {% endfor %}
             {% else %}

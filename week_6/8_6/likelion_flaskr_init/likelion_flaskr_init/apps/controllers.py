@@ -106,6 +106,34 @@ def comment_create(article_id):
 
 		flash(u'댓글을 작성하였습니다.', 'success')
 		return redirect(url_for('article_detail', id=article_id))
+
+@app.route('/comment/delete/<int:id>', methods=['GET', 'POST'])
+def comment_delete(id):
+	comment = Comment.query.get(id)
+
+
+	if request.method == 'GET':
+		return render_template('comment/delete.html')		
+	elif request.method == 'POST':
+		if comment.password == request.form["password"]:
+			db.session.delete(comment)
+			db.session.commit()
+
+			flash(u'댓글을 삭제하였습니다.', 'success')
+		else:
+			flash(u'비밀번호가 틀렸습니다.', 'fail')
+
+		return redirect(url_for('article_detail'))
+
+@app.route('/comment/like/<int:article_id>/<int:comment_id>', methods=['GET', 'POST'])
+def comment_like(article_id, comment_id):
+	comment = Comment.query.get(comment_id)
+
+	comment.like += 1
+	db.session.commit()
+
+	return redirect(url_for('article_detail', id = article_id))
+
 #
 # @error Handlers
 #
